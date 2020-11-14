@@ -1,0 +1,44 @@
+{% extends "framework.html" %}
+{% block content %}
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <h3 class="text-primary text-center">
+                    <strong>图书管理</strong>
+                </h3>
+                <ul class="nav flex-colomn nav-fill nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('admin.index') }}">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.issue') }}">图书入库</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.query') }}">图书查询</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.borrow') }}">借书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.book_return') }}">还书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.addcard') }}">借书证管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10 column">
+                <div class="page-header">
+                    <h1>
+                        管理员，您好！
+                    </h1>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url_for('login.a') }}">图书管理</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('admin.index') }}">管理员首页</a></li>
+                    </ol>
+                </nav>
+
+            </div>
+        </div>
+{% endblock %}
