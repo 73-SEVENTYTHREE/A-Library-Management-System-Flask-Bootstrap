@@ -1,0 +1,86 @@
+{% extends "framework.html" %}
+{% block content %}
+
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            <h3 class="text-primary text-center">
+                    <strong>图书管理</strong>
+                </h3>
+                <ul class="nav flex-colomn nav-fill nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.index') }}">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.issue') }}">图书入库</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('admin.query') }}">图书查询</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.borrow') }}">借书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.book_return') }}">还书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin.addcard') }}">借书证管理</a>
+                    </li>
+                </ul>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="col-10">
+                    <div class="container">
+                        <h4 class="text-primary">
+                            <svg class="bi bi-file-earmark-text" width="1em" height="1em" viewBox="0 0 16 16"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/>
+                                <path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z"></path>
+                                <path fill-rule="evenodd"
+                                      d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                            <strong>查询结果</strong>
+                        </h4>
+                        <p>根据您的条件，共有以下书籍符合要求</p>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-10">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">书号</th>
+                            <th scope="col">类别</th>
+                            <th scope="col">书名</th>
+                            <th scope="col">出版社</th>
+                            <th scope="col">年份</th>
+                            <th scope="col">作者</th>
+                            <th scope="col">价格</th>
+                            <th scope="col">总藏书量</th>
+                            <th scope="col">库存</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for t in results %}
+                            <tr>
+                                <td>{{ t.number }}</td>
+                                <td>{{ t.type }}</td>
+                                <td>{{ t.name }}</td>
+                                <td>{{ t.publisher }}</td>
+                                <td>{{ t.year }}</td>
+                                <td>{{ t.author }}</td>
+                                <td>{{ t.price }}</td>
+                                <td>{{ t.total }}</td>
+                                <td>{{ t.stock }}</td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
